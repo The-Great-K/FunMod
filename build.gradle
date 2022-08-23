@@ -15,8 +15,8 @@ apply plugin: 'net.minecraftforge.gradle'
 
 
 version = '1.0'
-group = 'com.yourname.modid'
-archivesBaseName = 'modid'
+group = 'https://github.com/The-Great-K/FunMod'
+archivesBaseName = 'funmod'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -32,10 +32,10 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'funmod'
 
             mods {
-                examplemod {
+                funmod {
                     source sourceSets.main
                 }
             }
@@ -46,10 +46,10 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'funmod'
 
             mods {
-                examplemod {
+                funmod {
                     source sourceSets.main
                 }
             }
@@ -60,10 +60,10 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'funmod'
 
             mods {
-                examplemod {
+                funmod {
                     source sourceSets.main
                 }
             }
@@ -74,10 +74,10 @@ minecraft {
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'funmod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                funmod {
                     source sourceSets.main
                 }
             }
@@ -99,12 +99,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "examplemod",
-                "Specification-Vendor"    : "examplemodsareus",
+                "Specification-Title"     : "A Fun Mod",
+                "Specification-Vendor"    : "The_Great_K",
                 "Specification-Version"   : "1", 
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "examplemodsareus",
+                "Implementation-Vendor"   : "The_Great_K",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
