@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
@@ -30,7 +29,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class TNTArrow extends AbstractArrow {
 
 	private final Item referenceItem;
-	private int fuseTime = 80;
 	@Nullable
 	private BlockState lastState;
 	private int life;
@@ -75,10 +73,6 @@ public class TNTArrow extends AbstractArrow {
 
 		if (this.shakeTime > 0) {
 			--this.shakeTime;
-		}
-
-		if (this.isInWaterOrRain() || blockstate.is(Blocks.POWDER_SNOW)) {
-			this.clearFire();
 		}
 
 		if (this.inGround && !flag) {
@@ -175,10 +169,19 @@ public class TNTArrow extends AbstractArrow {
 			this.checkInsideBlocks();
 		}
 
-		if (this.fuseTime == 0)
-			this.explode();
-
-		this.fuseTime--;
+		int fuse = 80;
+		if (fuse <= 0) {
+			this.discard();
+			if (!this.level.isClientSide) {
+				this.explode();
+			}
+		} else {
+			this.updateInWaterStateAndDoFluidPushing();
+			if (this.level.isClientSide) {
+				this.level.addParticle(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5D, this.getZ(), 0.0D, 0.0D,
+						0.0D);
+			}
+		}
 	}
 
 	private boolean shouldFall() {
