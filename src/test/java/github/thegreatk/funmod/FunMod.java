@@ -1,6 +1,7 @@
 package github.thegreatk.funmod;
 
 import github.thegreatk.funmod.init.ItemInit;
+import github.thegreatk.funmod.world.entity.ModEntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
@@ -21,6 +22,7 @@ public class FunMod {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		ItemInit.register(bus);
+		ModEntityType.register(bus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -28,7 +30,7 @@ public class FunMod {
 	public static final CreativeModeTab FUN_MOD_TAB = new CreativeModeTab(MODID) {
 		@Override
 		public ItemStack makeIcon() {
-			return new ItemStack(Blocks.TNT);
+			return new ItemStack(Blocks.DEEPSLATE_DIAMOND_ORE);
 		}
 	};
 
