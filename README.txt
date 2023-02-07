@@ -20,7 +20,7 @@ If you prefer to use Eclipse:
 2. Open Eclipse, Import > Existing Gradle Project > Select Folder 
    or run `gradlew eclipse` to generate the project.
 
-If you prefer to use IntelliJ:
+If you prefer to use IntelliJ:   
 1. Open IDEA, and import project.
 2. Select your build.gradle file and have it import.
 3. Run the following command: `gradlew genIntellijRuns` (`./gradlew genIntellijRuns` if you are on Mac/Linux)
